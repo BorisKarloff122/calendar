@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "calendar-app"
+  "defaultProject": "calendar-app",
+  "cli": {
+    "analytics": "11846271-7ea3-42e2-be9e-f6c05f9acbc6"
+  }
 }

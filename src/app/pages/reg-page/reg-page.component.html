@@ -1,0 +1,15 @@
+<div class="container reg-page">
+  <div class="title">
+    Calorie Calendar
+    <div class="sub-title">Your shape assistant</div>
+  </div>
+  <div class="img_block">
+    <img src="../../../assets/img/main.png">
+  </div>
+  <div class="button_block">
+    <button class="button" (click)="openModal()">Create User</button>
+  </div>
+</div>
+<app-user-form
+[open]="open"
+(closeModal)="closeModal()"></app-user-form>

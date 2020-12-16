@@ -1,0 +1,13 @@
+<div class="main_container">
+  <header>
+    <div class="container">
+      <div class="changeUser"></div>
+    </div>
+  </header>
+  <app-calendar *ngIf="currentWeek" [currentWeek] = currentWeek></app-calendar>
+  <pagination-controls (pageChange)="changeWeek($event)">
+    <ul style="display: none">
+      <li class="pag_button" *ngFor="let day of calendar | paginate: { itemsPerPage: 1,  currentPage:page}">{{page}}</li>
+    </ul>
+  </pagination-controls>
+</div>
