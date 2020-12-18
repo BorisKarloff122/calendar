@@ -6,10 +6,11 @@
     <div (click)="open()" class="changeUser"></div>
   </div>
   <div class="day" *ngFor ='let day of currentWeek; let i = index'>
-    <div *ngIf="day.calPerDay" class="calorieCount">{{day.calPerDay}}</div>
-    <div class="dayName">{{day.name}}</div>
+
+    <div class="dayName">{{day.name}}
+      <div *ngIf="day.calPerDay" class="calorieCount">{{day.calPerDay}}</div></div>
       <div class="marks">
-        <div (click)="getDay(i, j);" class="hourMark" *ngFor="let mark of day.hourMarks; let j = index">
+        <div (click)="getDay(i, j);" [ngClass]="mark.meal? 'active':''" class="hourMark" *ngFor="let mark of day.hourMarks; let j = index">
           <div *ngIf="mark.meal" class="meal">
             <div class="mealType">{{mark.meal.type}}</div>
             <div class="mealName">{{mark.meal.title}}</div>

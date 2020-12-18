@@ -26,6 +26,7 @@
 .open .shade{
   height:100%;
 }
+
 .modal .shade{
   background-color:rgba(0,0,0,0.4);
   width:100%;
@@ -45,8 +46,6 @@
   -ms-transition:0.4s;
 }
 
-
-
 .modal .line:nth-child(2) .line_block{
   margin-left:20px;
 }
@@ -58,7 +57,6 @@
   padding:10px 20px 30px 20px;
   position:relative;
 }
-
 
 .modal .close {
   background-image: url(../../../assets/img/close_one.png);
@@ -83,7 +81,7 @@
   flex-direction: column;
   margin-bottom:15px;
 }
-
+.modal input[type='number'],
 .modal select,
 .modal .line input[type='text']{
   width:100%;
@@ -95,13 +93,13 @@
   font-size:20px;
 }
 
-
 .line_name,
 .modal .line label{
   font-size:20px;
   margin-bottom:10px;
   font-weight:bold;
 }
+
 .modal .title{
   margin-top:50px;
   text-align: center;
@@ -109,7 +107,6 @@
   font-weight:bold;
   margin-bottom:10px;
 }
-
 
 .button {
   font-style: normal;

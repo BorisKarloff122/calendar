@@ -6,7 +6,7 @@
     <form [formGroup]="mealForm" (ngSubmit)="onSubmit()">
       <div class="line">
         <label for="foodType">Food type</label>
-        <input id="foodType" type="text" formControlName="title" placeholder="Food type">
+        <input id="foodType" type="text" formControlName="title" placeholder="Meal title">
       </div>
       <div class="line">
           <label for="mealType">Food type</label>
@@ -51,19 +51,19 @@
       </div>
       <div class="line">
         <label for="calValue">Calorie Value:</label>
-        <input type="text" id="calValue" formControlName="calValue">
+        <input type="number" id="calValue" formControlName="calValue">
       </div>
       <div class="line">
         <label for="carbs">Carbs Value:</label>
-        <input type="text" id="carbs" formControlName="carbs">
+        <input type="number" id="carbs" formControlName="carbs">
       </div>
       <div class="line">
         <label for="fats">Fats Value:</label>
-        <input type="text" id="fats" formControlName="fats">
+        <input type="number" id="fats" formControlName="fats">
       </div>
       <div class="line">
         <label for="proteins">Proteins Value:</label>
-        <input type="text" id="proteins" formControlName="proteins">
+        <input type="number" id="proteins" formControlName="proteins">
       </div>
       <input type="submit" class="button" value="Add Meal">
     </form>

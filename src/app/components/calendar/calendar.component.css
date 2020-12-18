@@ -8,12 +8,14 @@
   position:relative;
   background-size:103px auto;
 }
+
 .dayMarks{
   margin-top:15px;
 }
 
 .dayName{
   font-style: normal;
+  position: relative;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
@@ -23,6 +25,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .calorieCount{
   font-family: 'Roboto Condensed';
   font-style: normal;
@@ -30,15 +33,23 @@
   font-size: 15px;
   line-height: 18px;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -20px;
 }
+
 .header{
   display:flex;
   align-items: center;
+  position:relative;
   justify-content: center;
   flex-direction: column-reverse;
 }
+
 .changeUser{
   width:50px;
   height:50px;
@@ -48,7 +59,6 @@
   cursor: pointer;
   background-size:cover;
 }
-
 
 .markNames{
   width:50px;
@@ -75,13 +85,15 @@
   -ms-transition:0.4s;
 }
 
+
+.active,
 .hourMark:hover{
   background-color:#799CF4;
+  color:#fff;
   transition-duration: 0.4s;
   -webkit-transition:0.4s;
   -ms-transition:0.4s;
 }
-
 
 .addMeal{
   background-image:url('../../../assets/img/plus.png');
@@ -95,7 +107,7 @@
   bottom:15px;
   cursor: pointer;
   border-radius: 360px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   background-repeat: no-repeat;
   background-position: center;
 }
