@@ -10,6 +10,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { RegPageComponent } from './pages/reg-page/reg-page.component';
 import { MealViewComponent } from './forms/meal-view/meal-view.component';
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     NgxPaginationModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

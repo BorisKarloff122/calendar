@@ -8,11 +8,23 @@ export class LocalStorageService {
   public constructor(
   ){ }
 
-  public saveToStorage(form: CalendarUser): void{
-      localStorage.setItem('users', JSON.stringify(form));
+  public saveToStorage(Form: CalendarUser): void{
+      localStorage.setItem('user', JSON.stringify(Form));
   }
 
-  public getUser(): string | null{
-   return localStorage.getItem('users');
+  public getUser(): CalendarUser{
+    if (localStorage.getItem('user') !== null){
+      return JSON.parse(localStorage.getItem('user') as string);
+    }
+    else{
+      return {
+        userGender: '',
+        userWeight: null,
+        userHeight: null,
+        userMinCal: null,
+        userMaxCal: null,
+      };
+    }
+
   }
 }

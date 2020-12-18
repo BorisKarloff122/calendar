@@ -50,13 +50,16 @@
 .modal .line:nth-child(2) .line_block{
   margin-left:20px;
 }
+
 .modal_container{
-    width:50%;
+  width:500px;
   background-color:#fff;
   border-radius:10px;
   padding:10px 20px 30px 20px;
   position:relative;
-  }
+}
+
+
 .modal .close {
   background-image: url(../../../assets/img/close_one.png);
   background-position: center;
@@ -141,9 +144,23 @@ input[type="number"]:disabled{
 .modal .row{
   margin-top:10px;
 }
+.modal .line_block{
+  margin-right:20px;
+}
+
+
+
 .modal .row .content{
   flex-direction: row;
   display:flex;
+  margin-top:10px;
   align-items: center;
   justify-content: flex-start;
+}
+.modal .line:nth-child(4) .content{
+  justify-content: space-between!important;
+}
+
+.error{
+  border:1px solid red!important;
 }

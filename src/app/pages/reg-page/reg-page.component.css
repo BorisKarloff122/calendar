@@ -43,6 +43,10 @@
   background-color: #799CF4;
   width:300px;
   cursor: pointer;
+  display:flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
   color: #FFFFFF;
   transition-duration: 0.4s;
   -webkit-transition:0.4s;

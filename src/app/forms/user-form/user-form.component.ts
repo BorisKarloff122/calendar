@@ -1,63 +1,46 @@
-import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {CalendarUser} from '../../interfaces/userInterface';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {LocalStorageService} from '../../services/local-storage.service';
-import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
+import {Validators} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import {CalendarUser} from '../../interfaces/userInterface';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
-  public buttonText: string = '';
-  public formTitle: string = '';
-  public dayNames: Array<string> = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  public hourMarks: HourMarkInterface[] = Array(11).fill(0).map(() => ({}));
-  public week: Array<object> = Array(7).fill(0).map((i, x) => ({ name: (this.dayNames[x]), hourMarks: this.hourMarks, calPerDay: 0}));
-  public myForm: CalendarUser = {
-    gender: '',
-    weight: 0,
-    height: 0,
-    calendar: Array(4).fill(this.week),
-    minCal: 0,
-    maxCal: 0
-  };
+export class UserFormComponent {
+  public buttonText = 'Change User';
+  public formTitle = 'Change User Info';
+  public user: CalendarUser = this.localStorage.getUser();
+  public userForm = this.fb.group({
+    userGender: [this.user.userGender, Validators.required],
+    userWeight: [this.user.userWeight, [Validators.required, Validators.max(250)]],
+    userHeight: [this.user.userHeight, [Validators.required, Validators.max(350)]],
+    userMinCal: [this.user.userMinCal, [Validators.required, Validators.max(9999)]],
+    userMaxCal: [this.user.userMaxCal, [Validators.required, Validators.max(9999)]]
+  });
+  public error: boolean | undefined;
   @Input() public open: boolean | undefined;
   @Output() public closeModal: EventEmitter<string> = new EventEmitter<string>();
 
   public constructor(
-    private router: Router,
     public localStorage: LocalStorageService,
-  ){ }
+    private fb: FormBuilder,
+  ){}
 
-  public ngOnInit(): void {
-    this.checkRouterLink();
-  }
-
-  public checkRouterLink(): void {
-    if (this.router.url === '/calendar') {
-      this.buttonText = 'Change User';
-      this.formTitle = 'Change User Info';
-    } else {
-      this.buttonText = 'Create User';
-      this.formTitle = 'New User Info';
-
+  public onSubmit(): void{
+    if (this.userForm.valid){
+      this.error = false;
+      this.localStorage.saveToStorage(this.userForm.value);
+      this.closeThisModal();
     }
-  }
-
-  public countCalories(): void{
-    this.myForm.minCal = Math.round(((10 * this.myForm.weight) + (6.25 * this.myForm.height) + 5));
-    this.myForm.maxCal = Math.round(((10 * this.myForm.weight) + (6.25 * this.myForm.height) + 623.845));
+    else{
+      this.error = true;
+    }
   }
 
   public closeThisModal(): void{
         this.closeModal.emit();
   }
-
-  public sub(): void{
-    window.location.href = '/calendar';
-  }
-
-
 }

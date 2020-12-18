@@ -9,18 +9,16 @@ import {DayInterface} from '../../interfaces/dayInterface';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent{
-  public user: CalendarUser = JSON.parse(this.info.getUser() as string);
-  public calendar: Array<DayInterface[]> = this.user.calendar;
-  public currentWeek: DayInterface[] = this.calendar[0];
-  public page: number = 1;
+  public open: boolean = false;
 
   public constructor(
-    private info: LocalStorageService
   ){}
 
-  public changeWeek(event: any): void{
-    this.currentWeek = this.calendar[event - 1];
-    this.page = event;
+  public closeModal(): void{
+    this.open = false;
   }
 
+  public openModal(): void{
+    this.open = true;
+  }
 }

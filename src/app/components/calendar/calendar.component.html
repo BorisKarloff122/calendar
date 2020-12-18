@@ -1,12 +1,15 @@
 <div class="calendar_block">
-  <div class="dayMarks">
-    <div *ngFor="let mark of hourMarks" class="markNames">{{mark}}</div>
+  <div class="header">
+    <div class="dayMarks">
+      <div *ngFor="let mark of hourMarks" class="markNames">{{mark}}</div>
+    </div>
+    <div (click)="open()" class="changeUser"></div>
   </div>
   <div class="day" *ngFor ='let day of currentWeek; let i = index'>
-    <div class="calorieCount">{{day.calPerDay}}</div>
+    <div *ngIf="day.calPerDay" class="calorieCount">{{day.calPerDay}}</div>
     <div class="dayName">{{day.name}}</div>
       <div class="marks">
-        <div (click)="getDay(i, j);" class="hourMark" *ngFor="let mark of day.hourMarks; let j = index" [attr.data-hour-index]="j + 1">
+        <div (click)="getDay(i, j);" class="hourMark" *ngFor="let mark of day.hourMarks; let j = index">
           <div *ngIf="mark.meal" class="meal">
             <div class="mealType">{{mark.meal.type}}</div>
             <div class="mealName">{{mark.meal.title}}</div>
@@ -15,4 +18,7 @@
         </div>
       </div>
   </div>
+  <div class="addMeal" (click)="openMeal()"></div>
 </div>
+
+<app-meal-form *ngIf ='openMealModal' [openMeal] = 'openMealModal' (closeMeal)="openMeal()"></app-meal-form>

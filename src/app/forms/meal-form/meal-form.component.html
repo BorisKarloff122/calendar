@@ -1,1 +1,72 @@
-<p>meal-form works!</p>
+<div class="modal" [ngClass]="openMeal === true ? 'open' : ''">
+  <div class="shade" (click)="close()"></div>
+  <div class="modal_container">
+    <div class="close" (click)="close()"></div>
+    <div class="title">{{title}}</div>
+    <form [formGroup]="mealForm" (ngSubmit)="onSubmit()">
+      <div class="line">
+        <label for="foodType">Food type</label>
+        <input id="foodType" type="text" formControlName="title" placeholder="Food type">
+      </div>
+      <div class="line">
+          <label for="mealType">Food type</label>
+          <select id="mealType" formControlName="type">
+            <option value="Breakfast">Breakfast</option>
+            <option value="SmallBite">SmallBite</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+          </select>
+      </div>
+      <div class="line row">
+        <div class="content">
+        <div class="line_block">
+          <label for="time">Time:</label>
+          <select id="time" formControlName="time">
+            <option value="8:00">8:00</option>
+            <option value="9:00">9:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+          </select>
+        </div>
+        <div class="line_block">
+          <label for="day">Day</label>
+          <select formControlName="day" id="day">
+            <option value="Mon">Mon</option>
+            <option value="Tue">Tue</option>
+            <option value="Wed">Wed</option>
+            <option value="Thu">Thu</option>
+            <option value="Fri">Fri</option>
+            <option value="Sat">Sat</option>
+            <option value="Sun">Sun</option>
+          </select>
+        </div>
+        </div>
+      </div>
+      <div class="line">
+        <label for="calValue">Calorie Value:</label>
+        <input type="text" id="calValue" formControlName="calValue">
+      </div>
+      <div class="line">
+        <label for="carbs">Carbs Value:</label>
+        <input type="text" id="carbs" formControlName="carbs">
+      </div>
+      <div class="line">
+        <label for="fats">Fats Value:</label>
+        <input type="text" id="fats" formControlName="fats">
+      </div>
+      <div class="line">
+        <label for="proteins">Proteins Value:</label>
+        <input type="text" id="proteins" formControlName="proteins">
+      </div>
+      <input type="submit" class="button" value="Add Meal">
+    </form>
+    <div class="errorMsg" *ngIf="error === true">Fill All Fields Please</div>
+  </div>
+</div>

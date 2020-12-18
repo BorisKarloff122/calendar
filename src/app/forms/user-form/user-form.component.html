@@ -3,43 +3,47 @@
   <div class="modal_container">
     <div class="close" (click)="closeThisModal()"></div>
     <div class="title">{{formTitle}}</div>
-    <form class="form_block">
+    <form [formGroup]="userForm" class="form_block"  (ngSubmit)="onSubmit()">
       <div class="line row">
         <div class="line_name">User Gender</div>
         <div class="content">
           <div class="line_block">
             <label for="male">Male</label>
-            <input required="" [(ngModel)]="myForm.gender"  id="male" name="Gender" value="male" type="radio">
+            <input formControlName="userGender" id="male" name="userGender" value="male" type="radio">
           </div>
           <div class="line_block">
             <label for="female">Female</label>
-            <input id="female" [(ngModel)]="myForm.gender" name="Gender" value="female" type="radio">
+            <input formControlName="userGender" id="female" name="userGender" value="female" type="radio">
           </div>
         </div>
       </div>
       <div class="line">
         <label for="height">Height</label>
-        <input id='height' [(ngModel)]="myForm.height"  (ngModelChange)="countCalories()"  type="number" name='Height' placeholder="Your height">
+        <input [ngClass]="this.userForm.controls.userHeight.status === 'INVALID' && this.userForm.controls.userHeight.dirty === true ? 'error': '' " required  id='height' max = '350' formControlName="userHeight" type="number" name='userHeight' placeholder="Your height">
       </div>
       <div class="line">
         <label for="weight">Weight</label>
-        <input id='weight' type="number" [(ngModel)]="myForm.weight" (ngModelChange)="countCalories()" name="Weight" placeholder="Your weight">
+        <input [ngClass]="this.userForm.controls.userWeight.status === 'INVALID' && this.userForm.controls.userWeight.dirty === true ? 'error': '' "  required max="250" id='weight' formControlName="userWeight" Name="userWeight" type="number" name="userWeight" placeholder="Your weight">
       </div>
       <div class="line row">
         <div class="content">
           <div class="line_block">
             <label for="minCal">Min Cal</label>
-            <input id='minCal' type="number" [(ngModel)]="myForm.minCal" disabled='true' name="minCal" value="{{myForm.minCal}}" placeholder="Your weight">
+            <input id='minCal' [ngClass]="this.userForm.controls.userMinCal.status === 'INVALID' && this.userForm.controls.userMinCal.dirty === true ? 'error': '' "  required max="9999" formControlName="userMinCal" type="number" name="minCal" placeholder="MinCal">
           </div>
           <div class="line_block">
             <label for="maxCal">Max Cal</label>
-            <input id='maxCal' type="number" [(ngModel)]="myForm.maxCal" disabled="true" name="maxCal" value="{{myForm.maxCal}}" placeholder="Your weight">
+            <input id='maxCal' [ngClass]="this.userForm.controls.userMaxCal.status === 'INVALID' && this.userForm.controls.userMaxCal.dirty === true ? 'error': '' " required max="9999" formControlName="userMaxCal" type="number" name="maxCal" placeholder="MaxCal">
           </div>
         </div>
       </div>
       <div class="button_block">
-        <input type="button" (click)="localStorage.saveToStorage(myForm); sub();" class="button" value="{{buttonText}}">
+        <input type="submit" class="button" value="{{buttonText}}">
       </div>
+      <div *ngIf="error === true" class="error_block">Fill All Fields Please</div>
     </form>
   </div>
 </div>
+
+
+
