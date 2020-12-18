@@ -1,1 +1,33 @@
-<p>meal-view works!</p>
+<div class="modal" [ngClass]="openView === true ? 'open' : ''">
+  <div class="shade" (click)="closeThisView()"></div>
+  <div class="modal_container">
+    <div class="close" (click)="closeThisView()"></div>
+    <div class="with_mark" *ngIf="targetMark.meal;else dummy">
+    <div class="title">{{targetMark.meal?.type}}</div>
+    <div class="view_line">
+      <div class="blockName">Title:</div>
+      {{targetMark.meal?.title}}
+    </div>
+      <div class="view_line row">
+        <div class="view_block">
+          <div class="blockName">Time:</div>
+          {{targetMark.meal?.time}}
+        </div>
+        <div class="view_block">
+          <div class="blockName">Day:</div>
+          {{targetMark.meal?.day}}
+        </div>
+      </div>
+      <div class="view_line">
+        <div class="blockName">Calorie Value:</div>
+        {{targetMark.meal?.calValue}}
+      </div>
+  </div>
+    <ng-template #dummy>
+      <div class="dummy">
+        <div class="view_line empty">No meals yet</div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

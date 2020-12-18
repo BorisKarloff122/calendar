@@ -36,4 +36,9 @@ export class CalendarService {
     day.calPerDay = Number(day.calPerDay + form.calValue);
     localStorage.setItem('calendar', JSON.stringify(this.calendar));
   }
+
+  public getMeal(day: DayInterface, mark: HourMarkInterface): HourMarkInterface{
+      const TargetDay: DayInterface = this.calendar.find((entry) => entry.name === day.name) as DayInterface;
+      return TargetDay.hourMarks.find((entry) => entry.name === mark.name) as HourMarkInterface;
+  }
 }
