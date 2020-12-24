@@ -3,9 +3,9 @@ export interface MealInterface {
   type: string;
   day: string;
   time: string;
-  calValue: string;
-  carbs: string;
-  fats: string;
-  proteins: string;
+  calValue: number;
+  carbs: number;
+  fats: number;
+  proteins: number;
 }
 

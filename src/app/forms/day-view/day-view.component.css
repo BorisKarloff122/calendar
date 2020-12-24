@@ -23,9 +23,8 @@
   height:100%;
 }
 
-.open .shade{
-  height:100%;
-}
+
+
 .modal .shade{
   background-color:rgba(0,0,0,0.4);
   width:100%;
@@ -46,11 +45,6 @@
 }
 
 
-
-.modal .line:nth-child(2) .line_block{
-  margin-left:20px;
-}
-
 .modal_container{
   width:500px;
   background-color:#fff;
@@ -58,7 +52,6 @@
   padding:10px 20px 30px 20px;
   position:relative;
 }
-
 
 .modal .close {
   background-image: url(../../../assets/img/close_one.png);
@@ -85,24 +78,9 @@
 }
 
 
-.modal .line input[type='number']{
-  width:100%;
-  height:45px;
-  padding:12px;
-  box-sizing: border-box;
-  outline: none;
-  border:1px solid #eee;
-  font-size:20px;
-}
 
 
-.line_name,
-.modal .line label{
-  font-size:20px;
-  margin-bottom:10px;
-  font-weight:bold;
-}
-.modal .title{
+.modal .main_title{
   margin-top:50px;
   text-align: center;
   font-size:24px;
@@ -110,52 +88,62 @@
   margin-bottom:10px;
 }
 
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
 
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
 
-.button {
-  font-style: normal;
-  font-weight: normal;
-  margin:20px auto;
-  font-size: 24px;
-  line-height: 33px;
-  border: 1px solid transparent;
-  outline: none;
-  height: 50px;
-  background-color: #799CF4;
-  width: 300px;
-  cursor: pointer;
-  color: #FFFFFF;
-  transition-duration: 0.4s;
-  -webkit-transition: 0.4s;
-}
-
-.button:hover{
-  background-color:#fff;
-  border:1px solid #799CF4;
-  color:#799CF4;
-  transition-duration: 0.4s;
-  -webkit-transition:0.4s;
-  -ms-transition:0.4s;
-}
-
-input[type="number"]:disabled{
-  border:none!important;
-}
-
-.modal .row{
-  margin-top:10px;
-}
 .modal .line_block{
   margin-right:20px;
 }
 
+.meal .left{
+  padding:10px;
+  display:flex;
+  width:40%;
+  align-items:flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.row{display: flex;
+align-items: center;
+flex-direction: row}
 
+.meal .right{
+  padding: 10px;
+  flex-direction: column;
+  width:40%;
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.line{
+  font-size:20px;
+}
+
+.line .blockName{
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
+
+
+.red{
+  color:red!important;
+}
+
+.green{
+  color:green!important;
+}
+.meals{margin-top:20px;}
+.meal{
+  max-width:350px;
+  background-color:#799CF4;
+  color:#fff;
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+
+}
 
 .modal .row .content{
   flex-direction: row;

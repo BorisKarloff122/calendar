@@ -7,6 +7,9 @@
       <div class="line">
         <label for="foodType">Food type</label>
         <input id="foodType" type="text" formControlName="title" placeholder="Meal title">
+        <div *ngIf="controlsGetter('title').value === '' && (controlsGetter('title').touched === true && controlsGetter('title').dirty === true)">
+          Please Fill Title field
+        </div>
       </div>
       <div class="line">
           <label for="mealType">Food type</label>
@@ -22,29 +25,13 @@
         <div class="line_block">
           <label for="time">Time:</label>
           <select id="time" formControlName="time">
-            <option value="8:00">8:00</option>
-            <option value="9:00">9:00</option>
-            <option value="11:00">11:00</option>
-            <option value="12:00">12:00</option>
-            <option value="13:00">13:00</option>
-            <option value="14:00">14:00</option>
-            <option value="15:00">15:00</option>
-            <option value="16:00">16:00</option>
-            <option value="17:00">17:00</option>
-            <option value="18:00">18:00</option>
-            <option value="19:00">19:00</option>
+            <option *ngFor = 'let markNames of hourMarks' value="{{markNames}}">{{markNames}}</option>
           </select>
         </div>
         <div class="line_block">
           <label for="day">Day</label>
           <select formControlName="day" id="day">
-            <option value="Mon">Mon</option>
-            <option value="Tue">Tue</option>
-            <option value="Wed">Wed</option>
-            <option value="Thu">Thu</option>
-            <option value="Fri">Fri</option>
-            <option value="Sat">Sat</option>
-            <option value="Sun">Sun</option>
+            <option *ngFor ='let dayValue of days' value="{{dayValue}}">{{dayValue}}</option>
           </select>
         </div>
         </div>
@@ -52,21 +39,33 @@
       <div class="line">
         <label for="calValue">Calorie Value:</label>
         <input type="number" id="calValue" formControlName="calValue">
+        <div *ngIf="controlsGetter('calValue').value === null && (controlsGetter('calValue').touched === true && controlsGetter('calValue').dirty === true)">
+          Please Fill Calorie Value field
+        </div>
       </div>
       <div class="line">
         <label for="carbs">Carbs Value:</label>
         <input type="number" id="carbs" formControlName="carbs">
+        <div *ngIf="controlsGetter('carbs').value === null && (controlsGetter('carbs').touched === true && controlsGetter('carbs').dirty === true)">
+          Please Fill Carbs field
+        </div>
       </div>
       <div class="line">
         <label for="fats">Fats Value:</label>
         <input type="number" id="fats" formControlName="fats">
+        <div *ngIf="controlsGetter('fats').value === null && (controlsGetter('fats').touched === true && controlsGetter('fats').dirty === true)">
+          Please Fill Carbs field
+        </div>
       </div>
       <div class="line">
         <label for="proteins">Proteins Value:</label>
         <input type="number" id="proteins" formControlName="proteins">
+        <div *ngIf="controlsGetter('proteins').value === null && (controlsGetter('proteins').touched === true && controlsGetter('proteins').dirty === true)">
+          Please Fill Proteins field
+        </div>
       </div>
       <input type="submit" class="button" value="Add Meal">
     </form>
-    <div class="errorMsg" *ngIf="error === true">Fill All Fields Please</div>
+    <div class="errorMsg" *ngIf="error === true">Fill all Fields please</div>
   </div>
 </div>

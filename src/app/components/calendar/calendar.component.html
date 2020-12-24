@@ -5,12 +5,17 @@
     </div>
     <div (click)="open()" class="changeUser"></div>
   </div>
-  <div class="day" *ngFor ='let day of currentWeek; let i = index'>
-    <div class="dayName">{{day.name}}
-      <div *ngIf="day.calPerDay" class="calorieCount">{{day.calPerDay}}</div></div>
+  <div class="day"  *ngFor ='let day of currentWeek; let i = index'>
+    <div (click)="openDayView(day)" class="dayName">{{day.name}}
+      <div *ngIf="day.calPerDay"
+           [ngClass] = "day.calPerDay < user.userMaxCal! ? 'green' : 'red'"
+           class="calorieCount">
+          {{day.calPerDay}}
+      </div>
+    </div>
       <div class="marks">
-        <div (click)="getDay(day, mark)" [ngClass]="mark.meal? 'active':''" class="hourMark" *ngFor="let mark of day.hourMarks; let j = index">
-          <div *ngIf="mark.meal" class="meal">
+        <div (click)="getDay(day, mark)" [ngClass]="mark.meal? 'active' : ''" class="hourMark" *ngFor = "let mark of day.hourMarks; let j = index">
+          <div *ngIf = "mark.meal" class="meal">
             <div class="mealType">{{mark.meal.type}}</div>
             <div class="mealName">{{mark.meal.title}}</div>
             <div class="mealCal">{{mark.meal.calValue}}</div>
@@ -20,9 +25,15 @@
   </div>
   <div class="addMeal" (click)="openMeal()"></div>
 </div>
+
 <app-meal-form *ngIf ='openMealModal'
                [openMeal] = 'openMealModal'
-               (closeMeal)="openMeal()"></app-meal-form>
+               (closeMeal)="openMeal()">
+</app-meal-form>
 <app-meal-view [targetMark] = 'targetMark'
                [openView] = 'openView'
-               (closeView)="openThisView()"></app-meal-view>
+               (closeView)="openThisView()">
+</app-meal-view>
+<app-day-view *ngIf="dayToView" [openDay] = 'openDay'
+              [day] = 'dayToView'
+              (closeDayView)="closeDayView()"></app-day-view>

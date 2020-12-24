@@ -62,7 +62,7 @@
 
 .markNames{
   width:50px;
-  height:90px;
+  height:70px;
   display:flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -74,12 +74,13 @@
 }
 
 .hourMark{
-  width:90px;
-  padding:10px;
+  width:70px;
+  padding:5px;
+  font-size:12px;
   border: 1px solid #D8D5D5;
   cursor: pointer;
   box-sizing: border-box;
-  height:90px;
+  height:70px;
   transition-duration: 0.4s;
   -webkit-transition:0.4s;
   -ms-transition:0.4s;
@@ -110,4 +111,19 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.day{
+  cursor: pointer;
+}
+.red{
+  color:red;
+}
+
+.green{
+  color:green;
+}
+
+.yellow{
+  color:yellow;
 }

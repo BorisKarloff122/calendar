@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HourMarkInterface} from '../interfaces/hourMarkInterface';
 import {MealInterface} from '../interfaces/mealInterface';
 import {DayInterface} from '../interfaces/dayInterface';
+import {SubValues} from '../interfaces/subValues';
 
 
 @Injectable({
@@ -24,6 +25,7 @@ export class CalendarService {
       localStorage.setItem('calendar', JSON.stringify(this.calendar));
     }
   }
+
 
   public getCalendar(): string | null{
     return localStorage.getItem('calendar');

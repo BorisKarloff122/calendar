@@ -19,21 +19,35 @@
       </div>
       <div class="line">
         <label for="height">Height</label>
-        <input [ngClass]="this.userForm.controls.userHeight.status === 'INVALID' && this.userForm.controls.userHeight.dirty === true ? 'error': '' " required  id='height' max = '350' formControlName="userHeight" type="number" name='userHeight' placeholder="Your height">
+        <input id='height' max = '250' formControlName="userHeight" type="number" name='userHeight' placeholder="Your height">
+        <div *ngIf="controlsGetter('userHeight').value === null && (controlsGetter('userHeight').touched === true && controlsGetter('userHeight').dirty === true)">
+          Please Fill User Height field
+        </div>
+        <div *ngIf="controlsGetter('userHeight').value > 250">Max Height value is 250</div>
       </div>
       <div class="line">
         <label for="weight">Weight</label>
-        <input [ngClass]="this.userForm.controls.userWeight.status === 'INVALID' && this.userForm.controls.userWeight.dirty === true ? 'error': '' "  required max="250" id='weight' formControlName="userWeight" Name="userWeight" type="number" name="userWeight" placeholder="Your weight">
+        <input required max="250" id='weight' formControlName="userWeight" Name="userWeight" type="number" name="userWeight" placeholder="Your weight">
+        <div *ngIf="controlsGetter('userWeight').value === null && (controlsGetter('userWeight').touched === true && controlsGetter('userWeight').dirty === true)">Please Fill User Weight field</div>
+        <div *ngIf="controlsGetter('userWeight').value > 250">Max Weight value is 250</div>
       </div>
       <div class="line row">
         <div class="content">
           <div class="line_block">
             <label for="minCal">Min Cal</label>
-            <input id='minCal' [ngClass]="this.userForm.controls.userMinCal.status === 'INVALID' && this.userForm.controls.userMinCal.dirty === true ? 'error': '' "  required max="9999" formControlName="userMinCal" type="number" name="minCal" placeholder="MinCal">
+            <input id='minCal'  required max="4000" formControlName="userMinCal" type="number" name="minCal" placeholder="MinCal">
+            <div *ngIf="controlsGetter('userMinCal').value === null && (controlsGetter('userMinCal').touched === true && controlsGetter('userMinCal').dirty === true)">Please Fill User Minimum Calories field</div>
+            <div *ngIf="controlsGetter('userMinCal').value > controlsGetter('userMaxCal').value">
+              Minimal calories can not be higher than maximal value
+            </div>
           </div>
           <div class="line_block">
             <label for="maxCal">Max Cal</label>
-            <input id='maxCal' [ngClass]="this.userForm.controls.userMaxCal.status === 'INVALID' && this.userForm.controls.userMaxCal.dirty === true ? 'error': '' " required max="9999" formControlName="userMaxCal" type="number" name="maxCal" placeholder="MaxCal">
+            <input id='maxCal' required max="4000" formControlName="userMaxCal" type="number" name="maxCal" placeholder="MaxCal">
+            <div *ngIf="controlsGetter('userMaxCal').value === null && (controlsGetter('userMaxCal').touched === true && controlsGetter('userMaxCal').dirty === true)">Please Fill User Minimum Calories field</div>
+            <div *ngIf="controlsGetter('userMaxCal').value < controlsGetter('userMinCal').value">
+              Maximal calories can not be lower than minimal value
+            </div>
           </div>
         </div>
       </div>

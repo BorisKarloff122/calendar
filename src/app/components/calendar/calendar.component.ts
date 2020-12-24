@@ -2,6 +2,9 @@ import {Component, Output, EventEmitter} from '@angular/core';
 import {DayInterface} from '../../interfaces/dayInterface';
 import {CalendarService} from '../../services/calendar.service';
 import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
+import {LocalStorageService} from '../../services/local-storage.service';
+import {CalendarUser} from '../../interfaces/userInterface';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-calendar',
@@ -10,15 +13,18 @@ import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
 })
 export class CalendarComponent{
   public currentWeek: DayInterface[] = JSON.parse(this.calendar.getCalendar() as string);
-  public hourMarks: Array <string> = ['8:00', '9:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
-  public day: DayInterface | undefined;
+  public hourMarks: Array<string> = this.calendar.hourMarksNames;
+  public user: CalendarUser = this.userService.getUser();
   public openMealModal: boolean = false;
   public targetMark: HourMarkInterface = {name: 'No meals yet!'};
   public openView: boolean = false;
+  public openDay: boolean = false;
+  public dayToView: DayInterface | undefined;
   @Output() public openModal: EventEmitter<string> = new EventEmitter<string>();
 
-  public constructor(
+  constructor(
     private calendar: CalendarService,
+    private userService: LocalStorageService
   ){}
 
   public getDay(day: DayInterface, hourMark: HourMarkInterface): void{
@@ -35,7 +41,19 @@ export class CalendarComponent{
     this.openModal.emit();
   }
 
+  public closeDayView(): void{
+    this.openDay = false;
+  }
+
+  public openDayView(day: DayInterface): void{
+    this.openDay = true;
+    this.dayToView = day;
+  }
+
   public openThisView(): void{
     this.openView = !this.openView;
+
   }
+
+
 }

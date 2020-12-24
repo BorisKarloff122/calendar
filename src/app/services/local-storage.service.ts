@@ -21,10 +21,9 @@ export class LocalStorageService {
         userGender: '',
         userWeight: null,
         userHeight: null,
-        userMinCal: null,
-        userMaxCal: null,
+        userMinCal: 0,
+        userMaxCal: 0
       };
     }
-
   }
 }

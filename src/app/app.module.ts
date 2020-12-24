@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { DayViewComponent } from './forms/day-view/day-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MealFormComponent,
     CalendarComponent,
     RegPageComponent,
-    MealViewComponent
+    MealViewComponent,
+    DayViewComponent
   ],
   imports: [
     BrowserModule,

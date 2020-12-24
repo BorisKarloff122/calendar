@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CalendarService} from '../../services/calendar.service';
 
 
@@ -12,10 +12,12 @@ export class MealFormComponent {
   @Input() public openMeal: boolean | undefined;
   @Output() public closeMeal: EventEmitter<string> = new EventEmitter<string>();
   public title: string = 'New Meal';
+  public days: Array<string> = this.calendarService.dayNames;
+  public hourMarks: Array<string> = this.calendarService.hourMarksNames;
   public error: boolean = false;
   public mealForm: FormGroup = this.formCreate();
 
-  public constructor(
+  constructor(
     private fb: FormBuilder,
     private calendarService: CalendarService
   ){}
@@ -46,5 +48,9 @@ export class MealFormComponent {
 
   public close(): void {
     this.closeMeal.emit();
+  }
+
+  public controlsGetter(controlName: string): AbstractControl{
+    return this.mealForm.controls[controlName];
   }
 }

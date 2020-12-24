@@ -1,6 +1,6 @@
 import {MealInterface} from './mealInterface';
 
 export interface HourMarkInterface{
-  name?: string;
+  name: string;
   meal?: MealInterface;
 }
