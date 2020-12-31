@@ -3,12 +3,14 @@
   <div class="modal_container">
     <div class="close" (click)="close()"></div>
     <div class="title">{{title}}</div>
-    <form [formGroup]="mealForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="mealForm">
       <div class="line">
-        <label for="foodType">Food type</label>
+        <label for="foodType">Food title *</label>
         <input id="foodType" type="text" formControlName="title" placeholder="Meal title">
-        <div *ngIf="controlsGetter('title').value === '' && (controlsGetter('title').touched === true && controlsGetter('title').dirty === true)">
-          Please Fill Title field
+        <div *ngIf='meals.title.touched || isSubmitted' class="errorBlock">
+          <div *ngIf="meals.title.invalid">
+            Please Fill Title field
+          </div>
         </div>
       </div>
       <div class="line">
@@ -37,35 +39,42 @@
         </div>
       </div>
       <div class="line">
-        <label for="calValue">Calorie Value:</label>
+        <label for="calValue">Calorie Value *</label>
         <input type="number" id="calValue" formControlName="calValue">
-        <div *ngIf="controlsGetter('calValue').value === null && (controlsGetter('calValue').touched === true && controlsGetter('calValue').dirty === true)">
-          Please Fill Calorie Value field
+        <div *ngIf="meals.calValue.touched || isSubmitted" class="errorBlock">
+          <div *ngIf="meals.calValue.invalid">
+            Please Fill Calorie Value field
+          </div>
         </div>
       </div>
       <div class="line">
         <label for="carbs">Carbs Value:</label>
         <input type="number" id="carbs" formControlName="carbs">
-        <div *ngIf="controlsGetter('carbs').value === null && (controlsGetter('carbs').touched === true && controlsGetter('carbs').dirty === true)">
-          Please Fill Carbs field
+        <div *ngIf="meals.carbs.touched || isSubmitted" class="errorBlock">
+          <div *ngIf="meals.carbs.invalid">
+            Please Fill Carbs field
+          </div>
         </div>
       </div>
       <div class="line">
-        <label for="fats">Fats Value:</label>
+        <label for="fats">Fats Value *</label>
         <input type="number" id="fats" formControlName="fats">
-        <div *ngIf="controlsGetter('fats').value === null && (controlsGetter('fats').touched === true && controlsGetter('fats').dirty === true)">
+        <div *ngIf="(meals.fats.touched || isSubmitted)" class="errorBlock">
+          <div *ngIf="meals.fats.invalid">
           Please Fill Carbs field
         </div>
       </div>
+      </div>
       <div class="line">
-        <label for="proteins">Proteins Value:</label>
+        <label for="proteins">Proteins Value *</label>
         <input type="number" id="proteins" formControlName="proteins">
-        <div *ngIf="controlsGetter('proteins').value === null && (controlsGetter('proteins').touched === true && controlsGetter('proteins').dirty === true)">
+        <div class='errorBlock' *ngIf="meals.proteins.touched || isSubmitted">
+          <div *ngIf="meals.proteins.invalid">
           Please Fill Proteins field
         </div>
       </div>
-      <input type="submit" class="button" value="Add Meal">
+      </div>
+        <input [ngClass]="!mealForm.valid? 'error_button': '' " type="button" class="button" (click)="onSubmit()" value="Add Meal">
     </form>
-    <div class="errorMsg" *ngIf="error === true">Fill all Fields please</div>
   </div>
 </div>

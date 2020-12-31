@@ -45,10 +45,22 @@
   -ms-transition:0.4s;
 }
 
-
-
+.modal .line{
+  flex-wrap:wrap;
+}
+.modal .line:nth-child(2) .content{
+  flex-wrap:wrap;
+}
 .modal .line:nth-child(2) .line_block{
   margin-left:20px;
+
+}
+
+.modal .line:nth-child(4) .line_block{
+  width:46%;
+  margin-left:0;
+  margin-bottom:20px;
+
 }
 
 .modal_container{
@@ -110,13 +122,7 @@
   margin-bottom:10px;
 }
 
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
 
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
 
 .button {
   font-style: normal;
@@ -166,8 +172,23 @@ input[type="number"]:disabled{
 }
 .modal .line:nth-child(4) .content{
   justify-content: space-between!important;
+  flex-wrap:wrap;
 }
 
-.error{
-  border:1px solid red!important;
+
+.errorBlock{
+  color:red;
+}
+
+.error_button{
+  background-color:#fff;
+  border: 1px solid #799CF4;
+  color:#799CF4;
+}
+.ng-valid:not(form){
+  border: 1px solid #42A948!important; /* green */
+}
+
+.ng-invalid:not(form) {
+  border: 1px solid #a94442!important; /* red */
 }

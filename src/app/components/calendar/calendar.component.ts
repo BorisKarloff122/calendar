@@ -4,7 +4,6 @@ import {CalendarService} from '../../services/calendar.service';
 import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {CalendarUser} from '../../interfaces/userInterface';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-calendar',

@@ -8,36 +8,55 @@
       </div>
       <div class="line">
         <div class="blockName">Kcal:</div>
-        <div class="value" [ngClass]="day.calPerDay > user.userMaxCal! ? 'red' : 'green'">{{day.calPerDay}}</div>
+        <div class="value"
+             [ngClass]="
+             day.calPerDay > user.userMaxCal! ? 'red':
+             day.calPerDay < user.userMinCal! ? 'yellow' : 'green'">{{day.calPerDay}}</div>
       </div>
       <div class="line">
         <div class="blockName">Carbs:</div>
-        <div class="value">{{subValues.carbs}}</div>
+        <div class="value"
+             [ngClass]="
+             subValues.carbs > user.userCarbs! ? 'red':
+             subValues.carbs < user.userCarbs! ? 'yellow' : 'green'
+      ">{{subValues.carbs}}</div>
       </div>
       <div class="line">
         <div class="blockName">Proteins:</div>
-        <div class="value">{{subValues.proteins}}</div>
+        <div [ngClass]="
+             subValues.proteins > user.userProteins! ? 'red':
+             subValues.proteins < user.userProteins! ? 'yellow' : 'green'
+             "
+          class="value">{{subValues.proteins}}</div>
       </div>
       <div class="line">
         <div class="blockName">Fats:</div>
-        <div class="value">{{subValues.fats}}</div>
+        <div [ngClass]="
+             subValues.fats > user.userFats! ? 'red':
+             subValues.fats < user.userFats! ? 'yellow' : 'green'
+             "
+          class="value">{{subValues.fats}}</div>
       </div>
     </div>
     <div class="meals">
       <div class = 'meal' *ngFor = 'let meal of day.hourMarks; let i = index'>
         <ng-container *ngIf="day.hourMarks[i].meal">
-        <div class="left">
-          <div class="row">
-            <div class="block type">{{day.hourMarks[i].meal?.type}}&nbsp;</div>
-            <div class="block title">{{day.hourMarks[i].meal?.title}}</div>
+          <div class="left">
+            <div class="row">
+              <div class="block type">
+                {{day.hourMarks[i].meal?.type}}
+              </div>
+              <div class="block title">
+                {{day.hourMarks[i].meal?.title}}
+              </div>
+            </div>
+            <div class=" block value">
+             Kcal: {{day.hourMarks[i].meal?.calValue}}
+            </div>
           </div>
-          <div class=" block value">
-           Kcal: {{day.hourMarks[i].meal?.calValue}}
+          <div class="right">
+            <div class="time">{{day.hourMarks[i].name}}</div>
           </div>
-        </div>
-        <div class="right">
-          <div class="time">{{day.hourMarks[i].name}}</div>
-        </div>
         </ng-container>
       </div>
     </div>

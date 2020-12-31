@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
 
 @Component({
@@ -6,14 +6,12 @@ import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
   templateUrl: './meal-view.component.html',
   styleUrls: ['./meal-view.component.css']
 })
-export class MealViewComponent implements OnInit {
+export class MealViewComponent{
   @Input() public targetMark!: HourMarkInterface;
   @Input() public openView!: boolean;
   @Output() public closeView: EventEmitter<string> = new EventEmitter<string>();
 
-  public constructor(){}
-
-  public ngOnInit(): void{}
+  constructor(){}
 
   public closeThisView(): void{
     this.closeView.emit();

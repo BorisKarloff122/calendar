@@ -158,6 +158,19 @@ input[type="text"]:disabled{
   justify-content: space-between!important;
 }
 
-.error{
-  border:1px solid red!important;
+.errorBlock{
+  color:red;
+}
+
+.error_button{
+  background-color:#fff;
+  border: 1px solid #799CF4;
+  color:#799CF4;
+}
+.ng-valid:not(form){
+  border: 1px solid #42A948!important; /* green */
+}
+
+.ng-invalid:not(form) {
+  border: 1px solid #a94442!important; /* red */
 }

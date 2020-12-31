@@ -21,8 +21,11 @@ export class LocalStorageService {
         userGender: '',
         userWeight: null,
         userHeight: null,
-        userMinCal: 0,
-        userMaxCal: 0
+        userMinCal: null,
+        userMaxCal: null,
+        userProteins: null,
+        userCarbs: null,
+        userFats: null
       };
     }
   }

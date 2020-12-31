@@ -8,13 +8,14 @@
   <div class="day"  *ngFor ='let day of currentWeek; let i = index'>
     <div (click)="openDayView(day)" class="dayName">{{day.name}}
       <div *ngIf="day.calPerDay"
-           [ngClass] = "day.calPerDay < user.userMaxCal! ? 'green' : 'red'"
+           [ngClass] = "day.calPerDay < user.userMinCal! ? 'yellow':
+           (day.calPerDay > user.userMaxCal!) ? 'red':'green'"
            class="calorieCount">
           {{day.calPerDay}}
       </div>
     </div>
       <div class="marks">
-        <div (click)="getDay(day, mark)" [ngClass]="mark.meal? 'active' : ''" class="hourMark" *ngFor = "let mark of day.hourMarks; let j = index">
+        <div (click)="getDay(day, mark)" [ngClass]=" mark.meal? 'active' : ''" class="hourMark" *ngFor = "let mark of day.hourMarks; let j = index">
           <div *ngIf = "mark.meal" class="meal">
             <div class="mealType">{{mark.meal.type}}</div>
             <div class="mealName">{{mark.meal.title}}</div>

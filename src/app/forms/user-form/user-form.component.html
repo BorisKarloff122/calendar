@@ -3,9 +3,9 @@
   <div class="modal_container">
     <div class="close" (click)="closeThisModal()"></div>
     <div class="title">{{formTitle}}</div>
-    <form [formGroup]="userForm" class="form_block"  (ngSubmit)="onSubmit()">
+    <form [formGroup]="userForm" class="form_block">
       <div class="line row">
-        <div class="line_name">User Gender</div>
+        <div class="line_name">User Gender *</div>
         <div class="content">
           <div class="line_block">
             <label for="male">Male</label>
@@ -18,43 +18,86 @@
         </div>
       </div>
       <div class="line">
-        <label for="height">Height</label>
+        <label for="height">Height *</label>
         <input id='height' max = '250' formControlName="userHeight" type="number" name='userHeight' placeholder="Your height">
-        <div *ngIf="controlsGetter('userHeight').value === null && (controlsGetter('userHeight').touched === true && controlsGetter('userHeight').dirty === true)">
-          Please Fill User Height field
+        <div class="errorBlock" *ngIf="userFormList.userHeight.dirty || isSubmitted">
+          <div *ngIf="userFormList.userHeight.invalid">
+            Please Fill User Height field
+          </div>
+          <div *ngIf="userFormList.userHeight.value > 250">
+            Max Height value is 250
+          </div>
         </div>
-        <div *ngIf="controlsGetter('userHeight').value > 250">Max Height value is 250</div>
       </div>
       <div class="line">
-        <label for="weight">Weight</label>
-        <input required max="250" id='weight' formControlName="userWeight" Name="userWeight" type="number" name="userWeight" placeholder="Your weight">
-        <div *ngIf="controlsGetter('userWeight').value === null && (controlsGetter('userWeight').touched === true && controlsGetter('userWeight').dirty === true)">Please Fill User Weight field</div>
-        <div *ngIf="controlsGetter('userWeight').value > 250">Max Weight value is 250</div>
+        <label for="weight">Weight *</label>
+        <input required max="250" id='weight' formControlName="userWeight" type="number" name="userWeight" placeholder="Your weight">
+        <div class="errorBlock" *ngIf="userFormList.userWeight.dirty || isSubmitted">
+          <div *ngIf="userFormList.userWeight.invalid">
+            Please Fill User Weight field
+          </div>
+          <div *ngIf="userFormList.userWeight.value > 250">
+            Max Weight value is 250
+          </div>
+        </div>
       </div>
       <div class="line row">
         <div class="content">
           <div class="line_block">
             <label for="minCal">Min Cal</label>
-            <input id='minCal'  required max="4000" formControlName="userMinCal" type="number" name="minCal" placeholder="MinCal">
-            <div *ngIf="controlsGetter('userMinCal').value === null && (controlsGetter('userMinCal').touched === true && controlsGetter('userMinCal').dirty === true)">Please Fill User Minimum Calories field</div>
-            <div *ngIf="controlsGetter('userMinCal').value > controlsGetter('userMaxCal').value">
-              Minimal calories can not be higher than maximal value
+            <input id='minCal' required max="4000" formControlName="userMinCal" type="number" placeholder="MinCal">
+            <div class="errorBlock" *ngIf="userFormList.userMinCal.dirty || isSubmitted">
+              <div *ngIf="userFormList.userMinCal.invalid">
+                Please Fill User Minimum Calories field</div>
+              <div *ngIf="userFormList.userMinCal.value > userFormList.userMaxCal.value">
+                Minimal calories can not be higher than maximal value
+              </div>
             </div>
           </div>
           <div class="line_block">
             <label for="maxCal">Max Cal</label>
             <input id='maxCal' required max="4000" formControlName="userMaxCal" type="number" name="maxCal" placeholder="MaxCal">
-            <div *ngIf="controlsGetter('userMaxCal').value === null && (controlsGetter('userMaxCal').touched === true && controlsGetter('userMaxCal').dirty === true)">Please Fill User Minimum Calories field</div>
-            <div *ngIf="controlsGetter('userMaxCal').value < controlsGetter('userMinCal').value">
-              Maximal calories can not be lower than minimal value
+            <div class="errorBlock" *ngIf="userFormList.userMaxCal.dirty || isSubmitted">
+              <div *ngIf="userFormList.userMaxCal.invalid">
+                Please Fill User Minimum Calories field
+              </div>
+              <div *ngIf="userFormList.userMaxCal.value < userFormList.userMinCal.value">
+                Maximal calories can not be lower than minimal value
+              </div>
+            </div>
+          </div>
+          <div class="line_block">
+            <label for="maxProteins">Max Proteins</label>
+            <input id='maxProteins' required max="4000" formControlName="userProteins" type="number" placeholder="MaxCal">
+            <div class="errorBlock" *ngIf="userFormList.userProteins.dirty || isSubmitted">
+              <div *ngIf="userFormList.userProteins.invalid">
+                Please Fill User Proteins field
+              </div>
+            </div>
+          </div>
+          <div class="line_block">
+            <label for="maxCarbs">Max Carbs</label>
+            <input id='maxCarbs' required formControlName="userCarbs" type="number" placeholder="MaxCarbs">
+            <div class="errorBlock" *ngIf="userFormList.userCarbs.dirty || isSubmitted">
+              <div *ngIf="userFormList.userCarbs.invalid">
+                Please Fill User Carbs field
+              </div>
+            </div>
+          </div>
+          <div class="line_block">
+            <label for="maxFats">Max Fats</label>
+            <input id='maxFats' required formControlName="userCarbs" type="number" placeholder="MaxCarbs">
+            <div class="errorBlock" *ngIf="userFormList.userFats.dirty || isSubmitted">
+              <div *ngIf="userFormList.userFats.invalid">
+                Please Fill User Fats field
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="button_block">
-        <input type="submit" class="button" value="{{buttonText}}">
+        <input [ngClass]="!userForm.valid? 'error_button': '' " type="submit" class="button" (click)="onSubmit()" value="{{buttonText}}">
       </div>
-      <div *ngIf="error === true" class="error_block">Fill All Fields Please</div>
     </form>
   </div>
 </div>
