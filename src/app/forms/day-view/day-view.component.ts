@@ -1,8 +1,7 @@
-import {Component, Input, Output, EventEmitter, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {DayInterface} from '../../interfaces/dayInterface';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {CalendarUser} from '../../interfaces/userInterface';
-import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
 import {CalendarService} from '../../services/calendar.service';
 import {SubValues} from '../../interfaces/subValues';
 import {MealInterface} from '../../interfaces/mealInterface';
@@ -18,7 +17,7 @@ export class DayViewComponent implements OnChanges{
   @Input() public day!: DayInterface;
   public user: CalendarUser = this.localStorage.getUser();
   public subValues!: SubValues;
-
+  public meal!: MealInterface;
   constructor(
     private calendar: CalendarService,
     private localStorage: LocalStorageService
@@ -35,7 +34,7 @@ export class DayViewComponent implements OnChanges{
       proteins: 0
     };
 
-    day.hourMarks.forEach((i, item: number) => {
+    day.hourMarks.forEach((i) => {
       if (i.meal){
         if (i.meal.carbs !== this.subValues.carbs / 2){
           this.subValues.carbs = this.subValues.carbs + i.meal.carbs;

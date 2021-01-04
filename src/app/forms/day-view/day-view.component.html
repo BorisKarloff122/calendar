@@ -39,8 +39,8 @@
       </div>
     </div>
     <div class="meals">
-      <div class = 'meal' *ngFor = 'let meal of day.hourMarks; let i = index'>
-        <ng-container *ngIf="day.hourMarks[i].meal">
+      <ng-container *ngFor = 'let meal of day.hourMarks; let i = index'>
+      <div class = 'meal'  *ngIf="day.hourMarks[i].meal" >
           <div class="left">
             <div class="row">
               <div class="block type">
@@ -57,8 +57,8 @@
           <div class="right">
             <div class="time">{{day.hourMarks[i].name}}</div>
           </div>
-        </ng-container>
       </div>
+      </ng-container>
     </div>
   </div>
 </div>
