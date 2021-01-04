@@ -12,12 +12,12 @@ import {MealInterface} from '../../interfaces/mealInterface';
   styleUrls: ['./day-view.component.css']
 })
 export class DayViewComponent implements OnChanges{
-  @Input() public openDay!: boolean;
-  @Output() public closeDayView: EventEmitter<string> = new EventEmitter<string>();
-  @Input() public day!: DayInterface;
   public user: CalendarUser = this.localStorage.getUser();
   public subValues!: SubValues;
   public meal!: MealInterface;
+  @Input() public openDay!: boolean;
+  @Output() public closeDayView: EventEmitter<string> = new EventEmitter<string>();
+  @Input() public day!: DayInterface;
   constructor(
     private calendar: CalendarService,
     private localStorage: LocalStorageService

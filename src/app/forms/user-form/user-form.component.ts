@@ -36,9 +36,9 @@ export class UserFormComponent implements OnInit{
       userHeight: [this.user.userHeight, [Validators.required]],
       userMinCal: [this.user.userMinCal, [Validators.required]],
       userMaxCal: [this.user.userMaxCal, [Validators.required]],
-      userProteins: [this.user.userMaxCal, [Validators.required]],
-      userCarbs: [this.user.userMaxCal, [Validators.required]],
-      userFats: [this.user.userMaxCal, [Validators.required]],
+      userProteins: [this.user.userProteins, [Validators.required]],
+      userCarbs: [this.user.userCarbs, [Validators.required]],
+      userFats: [this.user.userFats, [Validators.required]],
     });
   }
 

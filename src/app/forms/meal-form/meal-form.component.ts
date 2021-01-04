@@ -29,7 +29,7 @@ export class MealFormComponent implements OnInit{
   public formCreate(): void{
    this.mealForm = this.fb.group({
       title: ['', Validators.required],
-      type: ['Breakfast'],
+      type: [''],
       time: ['8:00'],
       day: ['Mon'],
       calValue: ['', Validators.required],
