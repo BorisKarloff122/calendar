@@ -1,8 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {DayInterface} from '../../interfaces/dayInterface';
-import {LocalStorageService} from '../../services/local-storage.service';
 import {CalendarUser} from '../../interfaces/userInterface';
-import {CalendarService} from '../../services/calendar.service';
 import {SubValues} from '../../interfaces/subValues';
 import {MealInterface} from '../../interfaces/mealInterface';
 
@@ -12,16 +10,15 @@ import {MealInterface} from '../../interfaces/mealInterface';
   styleUrls: ['./day-view.component.css']
 })
 export class DayViewComponent implements OnChanges{
-  public user: CalendarUser = this.localStorage.getUser();
   public subValues!: SubValues;
   public meal!: MealInterface;
+  @Input() public user!: CalendarUser;
   @Input() public openDay!: boolean;
-  @Output() public closeDayView: EventEmitter<string> = new EventEmitter<string>();
   @Input() public day!: DayInterface;
-  constructor(
-    private calendar: CalendarService,
-    private localStorage: LocalStorageService
-  ) { }
+  @Output() public closeDayView: EventEmitter<string> = new EventEmitter<string>();
+
+
+  constructor() { }
 
   ngOnChanges(): void {
       this.countSubValues(this.day);

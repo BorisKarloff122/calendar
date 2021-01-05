@@ -6,7 +6,7 @@
     <form [formGroup]="mealForm">
       <div class="line">
         <label for="foodType">Food title *</label>
-        <input id="foodType" type="text" formControlName="title" placeholder="Meal title">
+        <input [ngClass]="meals.title.invalid && meals.title.dirty || meals.title.invalid && isSubmitted ? 'error':''" id="foodType" type="text" formControlName="title" placeholder="Meal title">
         <div *ngIf='meals.title.touched || isSubmitted' class="errorBlock">
           <div *ngIf="meals.title.invalid">
             Please Fill Title field
@@ -40,8 +40,8 @@
       </div>
       <div class="line">
         <label for="calValue">Calorie Value *</label>
-        <input type="number" id="calValue" formControlName="calValue">
-        <div *ngIf="meals.calValue.touched || isSubmitted" class="errorBlock">
+        <input [ngClass]="meals.calValue.invalid && meals.calValue.dirty || meals.calValue.invalid && isSubmitted ? 'error':''"  type="number" id="calValue" formControlName="calValue">
+        <div *ngIf="meals.calValue.dirty || isSubmitted" class="errorBlock">
           <div *ngIf="meals.calValue.invalid">
             Please Fill Calorie Value field
           </div>
@@ -49,8 +49,8 @@
       </div>
       <div class="line">
         <label for="carbs">Carbs Value:</label>
-        <input type="number" id="carbs" formControlName="carbs">
-        <div *ngIf="meals.carbs.touched || isSubmitted" class="errorBlock">
+        <input [ngClass]="meals.carbs.invalid && meals.carbs.dirty || meals.carbs.invalid && isSubmitted ? 'error':''" type="number" id="carbs" formControlName="carbs">
+        <div *ngIf="meals.carbs.dirty || isSubmitted" class="errorBlock">
           <div *ngIf="meals.carbs.invalid">
             Please Fill Carbs field
           </div>
@@ -58,8 +58,8 @@
       </div>
       <div class="line">
         <label for="fats">Fats Value *</label>
-        <input type="number" id="fats" formControlName="fats">
-        <div *ngIf="(meals.fats.touched || isSubmitted)" class="errorBlock">
+        <input [ngClass]="meals.fats.invalid && meals.fats.dirty || meals.fats.invalid && isSubmitted ? 'error':''" type="number" id="fats" formControlName="fats">
+        <div *ngIf="(meals.fats.dirty || isSubmitted)" class="errorBlock">
           <div *ngIf="meals.fats.invalid">
           Please Fill Carbs field
         </div>
@@ -67,8 +67,8 @@
       </div>
       <div class="line">
         <label for="proteins">Proteins Value *</label>
-        <input type="number" id="proteins" formControlName="proteins">
-        <div class='errorBlock' *ngIf="meals.proteins.touched || isSubmitted">
+        <input [ngClass]="meals.proteins.invalid && meals.proteins.dirty || meals.proteins.invalid && isSubmitted ? 'error':''" type="number" id="proteins" formControlName="proteins">
+        <div class='errorBlock' *ngIf="meals.proteins.dirty || isSubmitted">
           <div *ngIf="meals.proteins.invalid">
           Please Fill Proteins field
         </div>

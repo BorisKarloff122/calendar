@@ -28,13 +28,17 @@
 </div>
 
 <app-meal-form *ngIf ='openMealModal'
-               [openMeal] = 'openMealModal'
+               [openMeal] = true
                (closeMeal)="openMeal()">
 </app-meal-form>
-<app-meal-view [targetMark] = 'targetMark'
-               [openView] = 'openView'
+<app-meal-view *ngIf="openView"
+               [targetMark] = targetMark
+               [openView] = true
+               [user] = user
                (closeView)="openThisView()">
 </app-meal-view>
-<app-day-view *ngIf="dayToView" [openDay] = 'openDay'
+<app-day-view *ngIf="dayToView"
+              [openDay] = true
               [day] = 'dayToView'
+              [user] = user
               (closeDayView)="closeDayView()"></app-day-view>

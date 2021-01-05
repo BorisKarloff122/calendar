@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {CalendarUser} from '../../interfaces/userInterface';
-import {DayInterface} from '../../interfaces/dayInterface';
 
 @Component({
   selector: 'app-main-page',
@@ -10,8 +9,10 @@ import {DayInterface} from '../../interfaces/dayInterface';
 })
 export class MainPageComponent{
   public open: boolean = false;
+  public user: CalendarUser = this.localStorage.getUser();
 
-  public constructor(
+  constructor(
+    private localStorage: LocalStorageService
   ){}
 
   public closeModal(): void{

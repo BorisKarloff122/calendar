@@ -11,7 +11,9 @@
         <div class="value"
              [ngClass]="
              day.calPerDay > user.userMaxCal! ? 'red':
-             day.calPerDay < user.userMinCal! ? 'yellow' : 'green'">{{day.calPerDay}}</div>
+             day.calPerDay < user.userMinCal! ? 'yellow' : 'green'">
+          {{day.calPerDay}}
+        </div>
       </div>
       <div class="line">
         <div class="blockName">Carbs:</div>

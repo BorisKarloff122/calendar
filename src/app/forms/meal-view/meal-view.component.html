@@ -20,25 +20,33 @@
       </div>
       <div class="view_line">
         <div class="blockName">Calorie Value:</div>
-        {{targetMark.meal?.calValue}}
+        <span [ngClass]="
+             targetMark.meal?.calValue! > user.userMaxCal! ? 'red':
+             targetMark.meal?.calValue! < user.userMinCal! ? 'yellow' : 'green'">{{targetMark.meal?.calValue}}</span>
       </div>
       <div class="view_line">
         <div class="blockName">
           Proteins Value:
         </div>
-        {{targetMark.meal?.proteins}}
+        <span [ngClass]="
+             targetMark.meal?.proteins! > user.userProteins! ? 'red':
+             targetMark.meal?.proteins! < user.userProteins! ? 'yellow' : 'green'">{{targetMark.meal?.proteins}}</span>
       </div>
       <div class="view_line">
         <div class="blockName">
           Carbs Value:
         </div>
-        {{targetMark.meal?.carbs}}
+        <span [ngClass]="
+             targetMark.meal?.carbs! > user.userCarbs! ? 'red':
+             targetMark.meal?.carbs! < user.userCarbs! ? 'yellow' : 'green'">{{targetMark.meal?.carbs}}</span>
       </div>
       <div class="view_line">
         <div class="blockName">
           Fats Value:
         </div>
-        {{targetMark.meal?.fats}}
+        <span [ngClass]="
+             targetMark.meal?.fats! > user.userFats! ? 'red':
+             targetMark.meal?.fats! < user.userFats! ? 'yellow' : 'green'"> {{targetMark.meal?.fats}}</span>
       </div>
   </div>
     <ng-template #dummy>

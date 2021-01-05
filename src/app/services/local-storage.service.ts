@@ -5,7 +5,7 @@ import {CalendarUser} from '../interfaces/userInterface';
   providedIn: 'root'
 })
 export class LocalStorageService {
-  public constructor(
+  constructor(
   ){ }
 
   public saveToStorage(Form: CalendarUser): void{

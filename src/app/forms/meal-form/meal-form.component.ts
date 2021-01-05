@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CalendarService} from '../../services/calendar.service';
 
 
@@ -9,13 +9,13 @@ import {CalendarService} from '../../services/calendar.service';
   styleUrls: ['./meal-form.component.css']
 })
 export class MealFormComponent implements OnInit{
-  @Input() public openMeal: boolean | undefined;
-  @Output() public closeMeal: EventEmitter<string> = new EventEmitter<string>();
   public title: string = 'New Meal';
   public days: Array<string> = this.calendarService.dayNames;
   public hourMarks: Array<string> = this.calendarService.hourMarksNames;
   public isSubmitted: boolean = false;
   public mealForm!: FormGroup;
+  @Input() public openMeal: boolean | undefined;
+  @Output() public closeMeal: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +26,7 @@ export class MealFormComponent implements OnInit{
     this.formCreate();
   }
 
-  public formCreate(): void{
+  private formCreate(): void{
    this.mealForm = this.fb.group({
       title: ['', Validators.required],
       type: [''],
@@ -48,6 +48,7 @@ export class MealFormComponent implements OnInit{
   }
 
   public close(): void {
+    this.openMeal = false;
     this.closeMeal.emit();
   }
 

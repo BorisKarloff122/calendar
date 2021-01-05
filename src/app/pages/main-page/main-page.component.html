@@ -1,4 +1,6 @@
 <div class="main_container">
-  <app-calendar (openModal) ="openModal()"></app-calendar>
-  <app-user-form [open]="open" (closeModal)="closeModal()" ></app-user-form>
+  <app-calendar [user] = user
+                (openModal) ="openModal()"></app-calendar>
+  <app-user-form [user]=user
+                 [open]="open" (closeModal)="closeModal()" ></app-user-form>
 </div>

@@ -185,13 +185,9 @@ input[type="number"]:disabled{
   border: 1px solid #799CF4;
   color:#799CF4;
 }
-.ng-valid:not(form){
-  border: 1px solid #42A948;
-}
 
-.ng-invalid:not(form) {
+
+.error {
   border: 1px solid #a94442!important; /* red */
 }
-.ng-untouched:not(form) {
-  border:1px solid #eeeeee!important;
-}
+

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {HourMarkInterface} from '../interfaces/hourMarkInterface';
 import {MealInterface} from '../interfaces/mealInterface';
 import {DayInterface} from '../interfaces/dayInterface';
-import {SubValues} from '../interfaces/subValues';
-
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,7 @@ export class CalendarService {
   public week: Array<object> = Array(7).fill(0).map((i, x) => ({ name: (this.dayNames[x]), hourMarks: this.hourMarks, calPerDay: 0}));
   public calendar: DayInterface[] = JSON.parse(this.getCalendar() as string);
 
-  public constructor() { }
+  constructor() { }
 
   public setCalendar(): void{
     if (localStorage.getItem('calendar') === null){
@@ -25,7 +23,6 @@ export class CalendarService {
       localStorage.setItem('calendar', JSON.stringify(this.calendar));
     }
   }
-
 
   public getCalendar(): string | null{
     return localStorage.getItem('calendar');

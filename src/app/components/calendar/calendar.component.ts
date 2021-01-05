@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Output, Input, EventEmitter} from '@angular/core';
 import {DayInterface} from '../../interfaces/dayInterface';
 import {CalendarService} from '../../services/calendar.service';
 import {HourMarkInterface} from '../../interfaces/hourMarkInterface';
@@ -13,17 +13,16 @@ import {CalendarUser} from '../../interfaces/userInterface';
 export class CalendarComponent{
   public currentWeek: DayInterface[] = JSON.parse(this.calendar.getCalendar() as string);
   public hourMarks: Array<string> = this.calendar.hourMarksNames;
-  public user: CalendarUser = this.userService.getUser();
-  public openMealModal: boolean = false;
+  public openMealModal!: boolean;
   public targetMark: HourMarkInterface = {name: 'No meals yet!'};
-  public openView: boolean = false;
+  public openView!: boolean;
   public openDay: boolean = false;
   public dayToView: DayInterface | undefined;
+  @Input() public user!: CalendarUser;
   @Output() public openModal: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private calendar: CalendarService,
-    private userService: LocalStorageService
   ){}
 
   public getDay(day: DayInterface, hourMark: HourMarkInterface): void{
@@ -32,7 +31,7 @@ export class CalendarComponent{
   }
 
   public openMeal(): void{
-    this.openMealModal = !this.openMealModal;
+    this.openMealModal = true;
     this.currentWeek = JSON.parse(this.calendar.getCalendar() as string);
   }
 
@@ -50,8 +49,7 @@ export class CalendarComponent{
   }
 
   public openThisView(): void{
-    this.openView = !this.openView;
-
+    this.openView = true;
   }
 
 

@@ -9,19 +9,19 @@
         <div class="content">
           <div class="line_block">
             <label for="male">Male</label>
-            <input formControlName="userGender" id="male" name="userGender" value="male" type="radio">
+            <input formControlName="userGender" id="male"  value="male" type="radio">
           </div>
           <div class="line_block">
             <label for="female">Female</label>
-            <input formControlName="userGender" id="female" name="userGender" value="female" type="radio">
+            <input formControlName="userGender" id="female" value="female" type="radio">
           </div>
         </div>
       </div>
       <div class="line">
         <label for="height">Height *</label>
-        <input id='height' max = '250' formControlName="userHeight" type="number" name='userHeight' placeholder="Your height">
+        <input [ngClass]="userFormList.userHeight.invalid && userFormList.userHeight.dirty || userFormList.userHeight.invalid && isSubmitted ? 'error':''" id='height' max = '250' formControlName="userHeight" type="number"  placeholder="Your height">
         <div class="errorBlock" *ngIf="userFormList.userHeight.dirty || isSubmitted">
-          <div *ngIf="userFormList.userHeight.invalid">
+          <div *ngIf="userFormList.userHeight.invalid && userFormList.userHeight.value < 250">
             Please Fill User Height field
           </div>
           <div *ngIf="userFormList.userHeight.value > 250">
@@ -31,9 +31,9 @@
       </div>
       <div class="line">
         <label for="weight">Weight *</label>
-        <input required max="250" id='weight' formControlName="userWeight" type="number" name="userWeight" placeholder="Your weight">
+        <input [ngClass]="userFormList.userWeight.invalid && userFormList.userWeight.dirty || userFormList.userWeight.invalid && isSubmitted ? 'error':''" required max="250" id='weight' formControlName="userWeight" type="number" placeholder="Your weight">
         <div class="errorBlock" *ngIf="userFormList.userWeight.dirty || isSubmitted">
-          <div *ngIf="userFormList.userWeight.invalid">
+          <div *ngIf="userFormList.userWeight.invalid && userFormList.userWeight.value < 250">
             Please Fill User Weight field
           </div>
           <div *ngIf="userFormList.userWeight.value > 250">
@@ -44,8 +44,8 @@
       <div class="line row">
         <div class="content">
           <div class="line_block">
-            <label for="minCal">Min Cal</label>
-            <input id='minCal' required max="4000" formControlName="userMinCal" type="number" placeholder="MinCal">
+            <label for="minCal">Min Cal *</label>
+            <input [ngClass]="userFormList.userMinCal.invalid && userFormList.userMinCal.dirty || userFormList.userMinCal.invalid && isSubmitted ? 'error':''" id='minCal' required max="4000" formControlName="userMinCal" type="number" placeholder="MinCal">
             <div class="errorBlock" *ngIf="userFormList.userMinCal.dirty || isSubmitted">
               <div *ngIf="userFormList.userMinCal.invalid">
                 Please Fill User Minimum Calories field</div>
@@ -55,11 +55,11 @@
             </div>
           </div>
           <div class="line_block">
-            <label for="maxCal">Max Cal</label>
-            <input id='maxCal' required max="4000" formControlName="userMaxCal" type="number" name="maxCal" placeholder="MaxCal">
+            <label for="maxCal">Max Cal *</label>
+            <input id='maxCal' [ngClass]="userFormList.userMaxCal.invalid && userFormList.userMaxCal.dirty || userFormList.userMaxCal.invalid && isSubmitted ? 'error':''" required max="4000" formControlName="userMaxCal" type="number" name="maxCal" placeholder="MaxCal">
             <div class="errorBlock" *ngIf="userFormList.userMaxCal.dirty || isSubmitted">
               <div *ngIf="userFormList.userMaxCal.invalid">
-                Please Fill User Minimum Calories field
+                Please Fill User Maximum Calories field
               </div>
               <div *ngIf="userFormList.userMaxCal.value < userFormList.userMinCal.value">
                 Maximal calories can not be lower than minimal value
@@ -67,8 +67,8 @@
             </div>
           </div>
           <div class="line_block">
-            <label for="maxProteins">Max Proteins</label>
-            <input id='maxProteins' required max="4000" formControlName="userProteins" type="number" placeholder="MaxCal">
+            <label for="maxProteins">Max Proteins *</label>
+            <input [ngClass]="userFormList.userHeight.invalid && userFormList.userHeight.dirty || userFormList.userHeight.invalid && isSubmitted ? 'error':''" id='maxProteins' required max="4000" formControlName="userProteins" type="number" placeholder="MaxProteins">
             <div class="errorBlock" *ngIf="userFormList.userProteins.dirty || isSubmitted">
               <div *ngIf="userFormList.userProteins.invalid">
                 Please Fill User Proteins field
@@ -76,8 +76,8 @@
             </div>
           </div>
           <div class="line_block">
-            <label for="maxCarbs">Max Carbs</label>
-            <input id='maxCarbs' required formControlName="userCarbs" type="number" placeholder="MaxCarbs">
+            <label for="maxCarbs">Max Carbs *</label>
+            <input [ngClass]="userFormList.userCarbs.invalid && userFormList.userCarbs.dirty || userFormList.userCarbs.invalid && isSubmitted ? 'error':''" id='maxCarbs' required formControlName="userCarbs" type="number" placeholder="MaxCarbs">
             <div class="errorBlock" *ngIf="userFormList.userCarbs.dirty || isSubmitted">
               <div *ngIf="userFormList.userCarbs.invalid">
                 Please Fill User Carbs field
@@ -85,8 +85,8 @@
             </div>
           </div>
           <div class="line_block">
-            <label for="maxFats">Max Fats</label>
-            <input id='maxFats' required formControlName="userCarbs" type="number" placeholder="MaxCarbs">
+            <label for="maxFats">Max Fats *</label>
+            <input id='maxFats' [ngClass]="userFormList.userFats.invalid && userFormList.userFats.dirty || userFormList.userFats.invalid && isSubmitted ? 'error':''" required formControlName="userFats" type="number" placeholder="MaxCarbs">
             <div class="errorBlock" *ngIf="userFormList.userFats.dirty || isSubmitted">
               <div *ngIf="userFormList.userFats.invalid">
                 Please Fill User Fats field
